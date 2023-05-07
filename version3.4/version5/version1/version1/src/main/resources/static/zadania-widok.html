@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<head>
+  <meta charset="UTF-8">
+  <title>Wybrane zadanie</title>
+  <style>
+  body
+  {
+    background-color:black;
+    color:green;
+    font-family: 'Roboto', sans-serif;
+  }
+  .wrapper
+  {
+    background-color: black;
+    width:30%;
+    text-align:center;
+    border:1px solid black;
+    border-radius:7px;
+    margin-right:auto;
+    margin-left:auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-box-shadow: 0px 0px 40px 11px rgba(64, 179, 72, 1);
+    -moz-box-shadow: 0px 0px 40px 11px rgba(64, 179, 72, 1);
+    box-shadow: 0px 0px 40px 11px rgba(64, 179, 72, 1);
+  }
+  ul
+  {
+    text-decoration:none;
+    list-style-type:none;
+  }
+  input
+  {
+     border:1px solid black;
+     border-radius:7px;
+     padding:2px;
+     color:green;
+  }
+  button
+  {
+    border:1px solid black;
+    border-radius:7px;
+    padding:10px;
+    background-color:green;
+    color:white;
+    margin:2px;
+    font-size:15px;
+    text-align:center;
+    opacity:0.6;
+  }
+
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <h1 th:if="${polecenie != null}">Wybrane zadanie:</h1>
+  <b><p th:if="${polecenie != null}">Opis: <span th:text="${polecenie.tresc}"></span></p>
+    <ul th:if="${polecenie != null}">
+      <li th:each="odpowiedz : ${polecenie.odpowiedziId}">
+        <p>
+          <span th:text="${odpowiedz.indexOdpowiedzi}"></span>) <span th:text="${odpowiedz.tresc}"></span>
+        </p>
+      </li>
+    </ul>
+    <p th:if="${polecenie != null}">Poziom trudności: <span th:text="${polecenie.poziom}"></span></p>
+    <p th:if="${polecenie != null}">Dział: <span th:text="${polecenie.DzialName}"></span></p>
+  </b>
+  <p th:if="${wynik != null}" th:text="${wynik}"></p>
+  <ul th:if="${wynik != null and wynik == 'Odpowiedź niepoprawna.'}">
+    <li th:each="podpowiedz : ${podpowiedzi}">
+      <p>
+        <span th:text="${podpowiedz.tresc}"></span>
+      </p>
+    </li>
+  </ul>
+  <form method="post" action="/zadania-sprawdz" value="Podaj odpowiedź">
+    <input type="text" name="wynik">
+    <br/>
+    <br/>
+    <button type="submit">Sprawdź wynik</button>
+  </form>
+</div>
+</body>
