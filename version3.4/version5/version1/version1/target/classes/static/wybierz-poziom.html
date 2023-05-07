@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wybierz Poziom Trudności</title>
+    <style>
+         body
+        {
+            background-color:black;
+            color:green;
+            font-family: 'Roboto', sans-serif;
+        }
+        .wrapper
+        {
+            background-color: black;
+            width:20%;
+            text-align:center;
+            border:1px solid black;
+            border-radius:7px;
+            margin-right:auto;
+            margin-left:auto;
+            -webkit-box-shadow: 0px 0px 40px 11px rgba(64, 179, 72, 1);
+            -moz-box-shadow: 0px 0px 40px 11px rgba(64, 179, 72, 1);
+            box-shadow: 0px 0px 40px 11px rgba(64, 179, 72, 1);
+        }
+        button
+        {
+            border:1px solid black;
+            padding:10px;
+            background-color:black;
+            color:white;
+            margin:2px;
+            font-size:15px;
+            text-align:center;
+            border-bottom:2px solid green;
+            font-size:20px;
+
+        }
+        button:hover
+        {
+            color:green;
+            border-bottom: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <form method="get" action="/zadania-widok">
+        <label for="poziom">Wybierz poziom trudności:</label>
+        <select name="poziom" id="poziom">
+            <option value="Łatwy">Łatwy</option>
+            <option value="Średni">Średni</option>
+            <option value="Trudny">Trudny</option>
+        </select>
+        <button type="submit">Wybierz</button>
+    </form>
+</div>
+</body>
+</html>
